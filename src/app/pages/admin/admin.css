@@ -1,0 +1,75 @@
+.admin-container {
+  min-height: 100vh;
+  background-color: #f1f5f9;
+  padding: 40px 8%;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.admin-header h1 {
+  margin: 0;
+  color: #172033;
+  font-size: 30px;
+}
+
+.admin-header p {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.btn-sair {
+  padding: 10px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  color: #475569;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-sair:hover {
+  background-color: #f8fafc;
+}
+
+.admin-conteudo {
+  background-color: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.titulo-locais {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.titulo-locais h2 {
+  margin: 0;
+  color: #172033;
+}
+
+.titulo-locais p {
+  margin: 8px 0 0;
+  color: #64748b;
+}
+
+.btn-adicionar {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2864d7;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-adicionar:hover {
+  background-color: #1d4ed8;
+}

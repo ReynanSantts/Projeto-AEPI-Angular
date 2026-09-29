@@ -1,10 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Local } from '../models/local';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalService {
+  private platformId = inject(PLATFORM_ID);
   filtroCategoria = signal<'todos' | 'shopping' | 'mercado' | 'restaurante' | 'favoritos'>('todos');
   termoPesquisa = signal('');
   ordenacao = signal<'original' | 'nome' | 'avaliacao'>('original');
@@ -122,9 +124,31 @@ export class LocalService {
     },
   ]);
 
+  constructor() {
+    if (isPlatformBrowser(this.platformId)) {
+      const locaisSalvos = localStorage.getItem('locais');
+
+      if (locaisSalvos) {
+        this.locais.set(JSON.parse(locaisSalvos));
+      }
+    }
+  }
+
   alternarFavorito(id: number) {
     this.locais.update((locais) =>
       locais.map((local) => (local.id === id ? { ...local, favorito: !local.favorito } : local)),
     );
   }
+
+adicionarLocal(local: Local) {
+  this.locais.update((locais) => {
+    const novosLocais = [...locais, local];
+
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('locais', JSON.stringify(novosLocais));
+    }
+
+    return novosLocais;
+  });
+}
 }

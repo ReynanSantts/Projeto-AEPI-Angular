@@ -73,3 +73,87 @@
 .btn-adicionar:hover {
   background-color: #1d4ed8;
 }
+
+.formulario-local {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.formulario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.formulario-header h2 {
+  margin: 0;
+  color: #172033;
+}
+
+.formulario-header button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.formulario-local > p {
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.form-local {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  color: #172033;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.campo input,
+.campo select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: white;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #2864d7;
+}
+
+.preview-imagem {
+  margin-top: 10px;
+}
+
+.preview-imagem img {
+  width: 180px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.erro-campo {
+  display: block;
+  margin-top: 5px;
+  color: #dc2626;
+  font-size: 13px;
+}

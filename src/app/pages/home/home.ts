@@ -7,10 +7,11 @@ import { FiltrosLocais } from '../../components/filtros-locais/filtros-locais';
 import { Locais } from '../../components/locais/locais';
 import { DetalhesLocal } from '../../components/detalhes-local/detalhes-local';
 import { Local } from '../../models/local';
+import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-home',
-  imports: [Header, Hero, Destaque, Pesquisa, Locais, FiltrosLocais, DetalhesLocal],
+  imports: [Header, Hero, Destaque, Pesquisa, Locais, FiltrosLocais, DetalhesLocal, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

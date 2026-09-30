@@ -3,6 +3,8 @@
   align-items: center;
   justify-content: space-around;
   background-color: #f2f2f2;
+  min-height: 430px;
+  padding: 30px 60px;
 }
 
 .hero-acessibilidade {
@@ -10,9 +12,11 @@
 }
 
 .hero-acessibilidade img {
-  width: 350px;
+  width: 480px;
+  max-width: 100%;
 }
 
 .hero-mapa img {
-  width: 350px;
+  width: 480px;
+  max-width: 100%;
 }

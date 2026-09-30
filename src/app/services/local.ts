@@ -1,6 +1,6 @@
 import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Local } from '../models/local';
+import { Local, Avaliacao } from '../models/local';
 
 @Injectable({
   providedIn: 'root',
@@ -140,9 +140,84 @@ export class LocalService {
     );
   }
 
-adicionarLocal(local: Local) {
+  adicionarLocal(local: Local) {
+    this.locais.update((locais) => {
+      const novosLocais = [...locais, local];
+
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('locais', JSON.stringify(novosLocais));
+      }
+
+      return novosLocais;
+    });
+  }
+
+  removerLocal(id: number) {
+    this.locais.update((locais) => {
+      const novosLocais = locais.filter((local) => local.id !== id);
+
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('locais', JSON.stringify(novosLocais));
+      }
+      return novosLocais;
+    });
+  }
+
+  atualizarLocal(localAtualizado: Local) {
+    this.locais.update((locais) => {
+      const novosLocais = locais.map((local) =>
+        local.id === localAtualizado.id ? localAtualizado : local,
+      );
+
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('locais', JSON.stringify(novosLocais));
+      }
+
+      return novosLocais;
+    });
+  }
+
+adicionarAvaliacao(id: number, avaliacao: Avaliacao) {
   this.locais.update((locais) => {
-    const novosLocais = [...locais, local];
+    const novosLocais = locais.map((local) => {
+      if (local.id !== id) return local;
+
+      const novaQuantidade = local.quantidadeAvaliacoes + 1;
+
+      const novaMedia =
+        (local.avaliacao * local.quantidadeAvaliacoes + avaliacao.nota) /
+        novaQuantidade;
+
+      return {
+        ...local,
+        avaliacao: Number(novaMedia.toFixed(1)),
+        quantidadeAvaliacoes: novaQuantidade,
+        avaliacoes: [...local.avaliacoes, avaliacao],
+      };
+    });
+
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('locais', JSON.stringify(novosLocais));
+    }
+
+    return novosLocais;
+  });
+}
+
+removerAvaliacao(idLocal: number, indiceAvaliacao: number) {
+  this.locais.update((locais) => {
+    const novosLocais = locais.map((local) => {
+      if (local.id !== idLocal) return local;
+
+      const novasAvaliacoes = local.avaliacoes.filter(
+        (_, index) => index !== indiceAvaliacao
+      );
+
+      return {
+        ...local,
+        avaliacoes: novasAvaliacoes,
+      };
+    });
 
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('locais', JSON.stringify(novosLocais));

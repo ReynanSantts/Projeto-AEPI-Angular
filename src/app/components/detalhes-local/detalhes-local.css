@@ -335,3 +335,126 @@
   color: #172033;
   font-weight: 600;
 }
+
+.btn-avaliar {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.btn-avaliar:hover {
+  background: #1d4ed8;
+}
+
+.form-avaliacao {
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.form-avaliacao-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-avaliacao-topo h4 {
+  margin: 0;
+}
+
+.btn-fechar-avaliacao {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.campo-avaliacao {
+  margin-top: 15px;
+}
+
+.campo-avaliacao label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.estrelas-avaliacao {
+  display: flex;
+  gap: 4px;
+}
+
+.estrelas-avaliacao button {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.estrelas-avaliacao button.selecionada {
+  color: #fbbf24;
+}
+
+.campo-avaliacao input[type='text'],
+.campo-avaliacao textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.campo-avaliacao textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.campo-avaliacao input[type='text']:focus,
+.campo-avaliacao textarea:focus {
+  border-color: #2563eb;
+}
+
+.campo-avaliacao input[type='file'] {
+  width: 100%;
+}
+
+.btn-enviar-avaliacao {
+  width: 100%;
+  margin-top: 16px;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-enviar-avaliacao:hover {
+  background: #1d4ed8;
+}
+
+.estrelas-usuario {
+  display: flex;
+  gap: 2px;
+}
+
+.estrelas-usuario span {
+  color: #cbd5e1;
+  font-size: 18px;
+}
+
+.estrelas-usuario span.ativa {
+  color: #fbbf24;
+}

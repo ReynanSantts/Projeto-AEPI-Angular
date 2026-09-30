@@ -14,17 +14,17 @@
         <div class="avaliacao">
           <div class="estrelas">
             @for (estrela of estrelas; track estrela) {
-              <span class="star" [style.--fill.%]="calcularPreenchimento(estrela, local.avaliacao)">
+              <span class="star" [style.--fill.%]="calcularPreenchimento(estrela, localAtualizado().avaliacao)">
                 ★
               </span>
             }
           </div>
 
-          <strong>{{ local.avaliacao }}</strong>
+          <strong>{{ localAtualizado().avaliacao }}</strong>
         </div>
       </div>
 
-      <p class="quantidade-avaliacoes">{{ local.quantidadeAvaliacoes }} avaliações</p>
+      <p class="quantidade-avaliacoes">{{ localAtualizado().quantidadeAvaliacoes }} avaliações</p>
 
       <div class="informacoes">
         <div class="informacoes-local">
@@ -100,7 +100,61 @@
       <div class="avaliacoes-usuarios">
         <h3>Avaliações</h3>
 
-        @for (avaliacao of local.avaliacoes; track $index) {
+        <button type="button" class="btn-avaliar" (click)="abrirAvaliacao()">
+          Avaliar este local
+        </button>
+
+        @if (mostrarFormularioAvaliacao) {
+          <div class="form-avaliacao">
+            <div class="form-avaliacao-topo">
+              <h4>Avalie este local</h4>
+
+              <button type="button" class="btn-fechar-avaliacao" (click)="fecharAvaliacao()">
+                ×
+              </button>
+            </div>
+
+            <div class="campo-avaliacao">
+              <label>Sua nota</label>
+
+              <div class="estrelas-avaliacao">
+                @for (estrela of estrelas; track estrela) {
+                  <button
+                    type="button"
+                    (click)="selecionarNota(estrela)"
+                    [class.selecionada]="estrela <= notaAvaliacao"
+                  >
+                    ★
+                  </button>
+                }
+              </div>
+
+              <div class="campo-avaliacao">
+                <label>Seu nome</label>
+                <input type="text" placeholder="Digite seu nome" [(ngModel)]="nomeAvaliacao" />
+              </div>
+
+              <div class="campo-avaliacao">
+                <label>Comentário</label>
+                <textarea
+                  placeholder="Conte como foi sua experiência..."
+                  [(ngModel)]="comentarioAvaliacao"
+                ></textarea>
+              </div>
+
+              <div class="campo-avaliacao">
+                <label>Foto do local (opcional)</label>
+                <input type="file" accept="image/*" (change)="selecionarFotoAvaliacao($event)" />
+              </div>
+
+              <button type="button" class="btn-enviar-avaliacao" (click)="enviarAvaliacao()">
+                Enviar avaliação
+              </button>
+            </div>
+          </div>
+        }
+
+        @for (avaliacao of localAtualizado().avaliacoes; track $index) {
           <div class="avaliacao-usuario">
             <img [src]="avaliacao.foto" [alt]="avaliacao.usuario" />
 
@@ -108,19 +162,17 @@
               <strong>{{ avaliacao.usuario }}</strong>
 
               <div class="nota-usuario">
-                <div class="estrelas">
+                <div class="estrelas-usuario">
                   @for (estrela of estrelas; track estrela) {
-                    <span
-                      class="star"
-                      [style.--fill.%]="calcularPreenchimento(estrela, avaliacao.nota)"
-                    >
-                      ★
-                    </span>
+                    <span [class.ativa]="estrela <= avaliacao.nota">★</span>
                   }
                 </div>
+
                 <span>{{ avaliacao.nota }}</span>
               </div>
+
               <p>{{ avaliacao.mensagem }}</p>
+
               <div class="fotos-avaliacao">
                 @for (foto of avaliacao.fotos; track foto) {
                   @if (foto) {

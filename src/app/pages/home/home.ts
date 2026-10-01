@@ -7,16 +7,19 @@ import { FiltrosLocais } from '../../components/filtros-locais/filtros-locais';
 import { Locais } from '../../components/locais/locais';
 import { DetalhesLocal } from '../../components/detalhes-local/detalhes-local';
 import { Local } from '../../models/local';
+import { PopupSobre } from '../../components/popup-sobre/popup-sobre';
+import { Contatos } from '../../components/contatos/contatos';
 import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-home',
-  imports: [Header, Hero, Destaque, Pesquisa, Locais, FiltrosLocais, DetalhesLocal, Footer],
+  imports: [Header, Hero, Destaque, Pesquisa, Locais, FiltrosLocais, DetalhesLocal, Footer, PopupSobre, Contatos],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
   localSelecionado: Local | null = null;
+  mostrarSobre = false
 
   abrirDetalhes(local: Local) {
     this.localSelecionado = local;
@@ -26,5 +29,15 @@ export class Home {
   fecharDetalhes() {
     this.localSelecionado = null;
     document.body.style.overflow = '';
+  }
+
+  abrirPopupSobre(){
+    this.mostrarSobre = true
+    document.body.style.overflow = 'hidden'
+  }
+
+  fecharPopupSobre(){
+    this.mostrarSobre = false
+    document.body.style.overflow = ''
   }
 }

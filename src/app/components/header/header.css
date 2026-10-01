@@ -27,13 +27,15 @@ nav a {
   color: black;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
 }
 
 #locais {
   color: #2463eb;
-  cursor: pointer;
 }
 
 #contatos {
   color: #55cc73;
 }
+
+

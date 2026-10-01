@@ -1,10 +1,13 @@
-<app-header></app-header>
+<app-header (abrirSobre)="abrirPopupSobre()"></app-header>
+@if(mostrarSobre){
+  <app-popup-sobre (fechar)="fecharPopupSobre()"></app-popup-sobre>
+}
 <app-hero></app-hero>
 <app-destaque></app-destaque>
 <app-pesquisa></app-pesquisa>
 <app-filtros-locais></app-filtros-locais>
 <app-locais (verDetalhes)="abrirDetalhes($event)"></app-locais>
-
+<app-contatos></app-contatos>
 @if (localSelecionado) {
   <app-detalhes-local [local]="localSelecionado" (fechar)="fecharDetalhes()"> </app-detalhes-local>
 }
